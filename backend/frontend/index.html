@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stroke Risk Detector</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<!-- ===============================
+     Screen 1 : WELCOME
+================================ -->
+<div class="screen active" id="screen-welcome">
+    <h1>Stroke Risk Detector</h1>
+    <p>~ Understand your heart health and detect risk early ~</p>
+    <button onclick="goToScreen('screen-user')">Start</button>
+</div>
+
+<!-- ===============================
+     Screen 2 : USER INFO
+================================ -->
+<div id="screen-user" class="screen">
+    <h2>User Information</h2>
+
+    <input type="text" placeholder="Your Name (optional)">
+    <input type="number" placeholder="Age">
+    <input type="number" placeholder="Weight (kg)">
+    <input type="number" placeholder="Height (cm)">
+
+    <button onclick="goToScreen('screen-welcome')">Back</button>
+    <button onclick="goToScreen('screen-lifestyle')">Next</button>
+</div>
+
+<!-- ===============================
+     Screen 3 : LIFESTYLE
+================================ -->
+<div class="screen" id="screen-lifestyle">
+    <h2>Your Daily Habits</h2>
+    <p>These habits can affect stroke risk over time</p>
+
+    <div class="symptoms">
+        <label><input type="checkbox" value="smoking"> I smoke regularly</label>
+        <label><input type="checkbox" value="alcohol"> I consume alcohol frequently</label>
+        <label><input type="checkbox" value="physical_inactivity"> I am physically inactive</label>
+        <label><input type="checkbox" value="high_salt_diet"> I eat high salt / junk food</label>
+        <label><input type="checkbox" value="poor_sleep"> I have poor sleep</label>
+        <label><input type="checkbox" value="high_stress"> I feel stressed most of the time</label>
+    </div>
+
+    <button onclick="goToScreen('screen-user')">Back</button>
+    <button onclick="goToScreen('screen-symptoms')">Continue</button>
+</div>
+
+<!-- ===============================
+     Screen 4 : SYMPTOMS
+================================ -->
+<div class="screen" id="screen-symptoms">
+    <h2>Health Symptoms</h2>
+    <p>Select symptoms you are experiencing</p>
+
+    <div class="symptoms">
+        <label><input type="checkbox" value="chest_pain"> Chest Pain</label>
+        <label><input type="checkbox" value="shortness_of_breath"> Shortness of Breath</label>
+        <label><input type="checkbox" value="irregular_heartbeat"> Irregular Heartbeat</label>
+        <label><input type="checkbox" value="fatigue_weakness"> Fatigue & Weakness</label>
+        <label><input type="checkbox" value="dizziness"> Dizziness</label>
+        <label><input type="checkbox" value="swelling_edema"> Swelling (Edema)</label>
+        <label><input type="checkbox" value="pain_neck_jaw_shoulder_back"> Pain in Neck/Jaw/Shoulder/Back</label>
+        <label><input type="checkbox" value="excessive_sweating"> Excessive Sweating</label>
+        <label><input type="checkbox" value="persistent_cough"> Persistent Cough</label>
+        <label><input type="checkbox" value="nausea_vomiting"> Nausea/Vomiting</label>
+        <label><input type="checkbox" value="high_blood_pressure"> High Blood Pressure</label>
+        <label><input type="checkbox" value="chest_discomfort_activity"> Chest Discomfort (Activity)</label>
+        <label><input type="checkbox" value="cold_hands_feet"> Cold Hands/Feet</label>
+        <label><input type="checkbox" value="snoring_sleep_apnea"> Snoring/Sleep Apnea</label>
+        <label><input type="checkbox" value="anxiety_feeling_of_doom"> Anxiety / Feeling of Doom</label>
+    </div>
+
+    <button onclick="goToScreen('screen-lifestyle')">Back</button>
+    <button onclick="submitData()">Continue</button>
+</div>
+
+<!-- ===============================
+     Screen 5 : RESULT
+================================ -->
+<div class="screen" id="screen-result">
+    <div id="result-card" class="result-card">
+
+        <!-- ❤️ Heart + ECG -->
+        <div class="heart-container">
+            <div class="heart">❤️</div>
+            <svg class="ecg" viewBox="0 0 200 50">
+                <polyline
+                    points="0,25 20,25 30,10 40,40 50,25 70,25 90,25 100,10 110,40 120,25 200,25"
+                    fill="none"
+                    stroke="#d32f2f"
+                    stroke-width="2"
+                />
+            </svg>
+        </div>
+
+        <!-- Risk badge -->
+        <div id="risk-badge" class="risk-badge"></div>
+        <p id="risk-summary" class="risk-summary"></p>
+
+        <div id="progress-box" class="progress-box"></div>
+
+
+        <!-- Dynamic title -->
+        <h2 id="guidance-title"></h2>
+
+        <!-- Risk message -->
+        <p id="risk-message"></p>
+
+        <!-- Guidance -->
+        <div id="awareness-box" class="awareness"></div>
+
+        <!-- Explainability -->
+        <button class="explain-btn" onclick="toggleExplain()">
+            Why am I at risk?
+        </button>
+
+        <div id="explain-box" class="explain-box hidden"></div>
+
+        <button onclick="goToScreen('screen-welcome')">
+            Check Again
+        </button>
+    </div>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

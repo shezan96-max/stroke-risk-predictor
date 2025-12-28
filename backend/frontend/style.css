@@ -1,0 +1,210 @@
+/* ===== Global ===== */
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #f5f6fa;
+    color: #222;
+}
+
+/* ===== Screen Layout ===== */
+.screen {
+    display: none;
+    padding: 25px;
+    max-width: 420px;
+    margin: 40px auto;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.screen.active {
+    display: block;
+}
+
+/* ===== Headings ===== */
+h1, h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+p {
+    text-align: center;
+    color: #555;
+}
+
+/* ===== Inputs ===== */
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+/* ===== Buttons ===== */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    background: #222;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* ===== Checkbox Section ===== */
+.symptoms label {
+    display: block;
+    margin: 8px 0;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.symptoms input {
+    margin-right: 8px;
+}
+
+/* ===== Result Card ===== */
+.result-card {
+    padding: 20px;
+    border-radius: 14px;
+}
+
+/* 🔴 High Risk */
+.result-card.high {
+    background: #ffe6e6;
+    border-left: 6px solid #d32f2f;
+}
+
+/* 🟡 Low / Moderate Risk */
+.result-card.low {
+    background: #fff8e1;
+    border-left: 6px solid #f9a825;
+}
+
+/* ===== Risk Badge ===== */
+.risk-badge {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* ===== Guidance Title ===== */
+#guidance-title {
+    font-size: 20px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+/* ===== Guidance Box ===== */
+.awareness ul {
+    padding-left: 20px;
+}
+
+.awareness li {
+    margin: 6px 0;
+    line-height: 1.4;
+}
+
+/* ===== Mobile Friendly ===== */
+@media (max-width: 480px) {
+    .screen {
+        margin: 20px 10px;
+        padding: 20px;
+    }
+}
+
+
+/* ===== Heart Animation ===== */
+.heart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.heart {
+    font-size: 48px;
+    animation: heartbeat 1.5s infinite;
+}
+
+/* ECG line */
+.ecg {
+    width: 180px;
+    margin-top: 5px;
+}
+
+.ecg polyline {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: ecg-move 2s linear infinite;
+}
+
+/* 🔴 High risk heartbeat */
+.result-card.high .heart {
+    animation: heartbeat 1s infinite;
+}
+
+/* 🟡 Low risk heartbeat */
+.result-card.low .heart {
+    animation: heartbeat 2s infinite;
+}
+
+/* Animations */
+@keyframes heartbeat {
+    0%   { transform: scale(1); }
+    25%  { transform: scale(1.15); }
+    50%  { transform: scale(1); }
+    75%  { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes ecg-move {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+
+/* ===== Explainability ===== */
+.explain-box {
+    margin-top: 12px;
+    padding: 12px;
+    background: #f0f3f7;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.explain-box ul {
+    padding-left: 18px;
+}
+
+.explain-box li {
+    margin: 6px 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.progress-box {
+    background: #eef3f8;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
